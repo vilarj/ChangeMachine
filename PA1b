@@ -1,0 +1,81 @@
+/*
+ * Write a program that prompts the user for a count of quarters, dimes, nickels and pennies. The program
+ * must output the total amount in dollars and cents. For example:
+ * 
+ * Enter number	of	quarters:	6
+ * Enter number	of	dimes:	2
+ * Enter number	of	nickels:	0
+ * Enter number	of	pennies:	1
+ * You	have	$1.71	in	coins.
+ * 
+ * Note: you must ensure that the output properly shows two decimal places (e.g. $1.50 vs. $1.5) and, if any
+ * of the counts are negative, provide an error message after inputting all counts (supplied as a constant).
+ */
+
+/**
+ * Error message to display for any non-negative counts 
+ * Solutions for the second part of Pa1
+ * 
+ * @author vilarj
+ */
+import java.util.Scanner;
+public class PA1b {
+	
+	/**
+	 * Solution for the second part
+	 * @author jimenezc1
+	 * 
+	 * start the program, output the total amount of coin
+	 * @param args command-line arguments, ignored
+	 */
+	
+	public static final String ERR_MSG = "All coin counts must be non-negative!";
+
+	
+	public static void main(String[] args) {
+		Scanner input = new Scanner (System.in);
+		int quarters, dimes, nickels, pennies;
+		double q_coin, d_coin, n_coin, p_coin, total_amount;
+
+		// Quarters
+		System.out.print ("Enter number of quarters: ");
+		quarters = input.nextInt ();
+		q_coin = (quarters * 0.25);
+				
+		// Dimes
+		System.out.print ("Enter number of dimes: ");
+		dimes = input.nextInt ();
+		d_coin = (dimes * 0.10);
+		
+		// Nickels
+		System.out.print ("Enter number of nickels: ");
+		nickels = input.nextInt ();
+		n_coin = (nickels * 0.05);
+		
+		
+		// Pennies
+		System.out.print ("Enter number of pennies: ");
+		pennies = input.nextInt ();
+		p_coin = (pennies * 0.01);
+
+		// Final amount
+		total_amount = (q_coin + d_coin + n_coin + p_coin);
+		
+		// Checking for a negative result
+		if (total_amount < 0) {
+			System.out.println(ERR_MSG);
+		}
+		
+		else if (quarters < 0 || dimes < 0 || nickels < 0 || pennies < 0) {
+			System.out.println(ERR_MSG);
+		}
+		
+		else {
+		System.out.printf ("You have $%.2f in coins.", total_amount);
+			System.out.println ();
+		}
+		
+		// Closing the Scanner object
+		input.close();
+		}
+	}
